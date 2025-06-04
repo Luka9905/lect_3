@@ -4,10 +4,10 @@
 
 Для сборки `myRPC-client` и `myRPC-server` нужно перейти в главную директорию, в которой содержатся все файлы.
  1. Выполнить команду:
-    ```sh
-    make
-    ```
- 2. Для создания deb-пакета выполните команду:
+   ```sh
+   make
+   ```
+ 3. Для создания deb-пакета выполните команду:
    ```sh
    make deb
    ```
@@ -17,30 +17,34 @@
    ```
 ## Установка и настройка
 
-После сборки и создания deb-пакетов можно установить клиент и сервер с помощью команды `dpkg`:
+перейдите в соответствующие директории и выполните команды
 
 ```sh
-sudo dpkg -i deb/myrpc-client_1.0-1_amd64.deb
-sudo dpkg -i deb/myrpc-server_1.0-1_amd64.deb
-sudo dpkg -i deb/libmysyslog_1.0-1_amd64.deb
+sudo dpkg -i deb/myrpc-client.deb
+sudo dpkg -i deb/myrpc-server.deb
+sudo dpkg -i deb/libmysyslog.deb
 ```
 
 ### Настройка сервера
 
-1. Создайте конфигурационный файл `/etc/myRPC/myRPC.conf` для настройки параметров сервера. Пример файла:
+1. Создайте конфигурационный файл `/etc/myRPC/myRPC.conf`:
 ```conf
 sudo mkdir -p /etc/myRPC
 echo -e "port=5555\nsocket_type=stream" | sudo tee /etc/myRPC/myRPC.conf
 ```
 
-2. Создайте файл пользователей `/etc/myRPC/users.conf`, в котором указаны разрешённые пользователи:
+2. Создайте файл пользователей `/etc/myRPC/users.conf`:
 ```conf
 echo "your_username" | sudo tee /etc/myRPC/users.conf
 ```
 
 ## Использование
 
-### myRPC-client
+Сначала надо запустить приложение `myrpc-derver` это сервер, который будет ждать подключение клиента. Для запуска нужно выполнить команду:
+
+```sh
+sudo myrpc-server
+```
 
 Клиентское приложение `myRPC-client` позволяет отправлять команды на сервер для выполнения. Примеры использования:
 
@@ -48,22 +52,7 @@ echo "your_username" | sudo tee /etc/myRPC/users.conf
 ```sh
 # TCP-соединение
 myrpc-client -h 127.0.0.1 -p 5555 -s -c "date"
-
-# UDP-соединение
-myrpc-client -h 127.0.0.1 -p 5555 -d -c "date"
 ```
-
-### myrpc-server
-
-Серверное приложение `myrpc-server` запускается на сервере и ожидает подключения от клиентов. Для запуска сервера выполните команду:
-
-```sh
-sudo myrpc-server
-```
-
-## Логирование и отладка
-
-Сервер `myrpc-server` использует библиотеку `libmysyslog` для ведения журнала событий. Все события записываются в файл `/var/log/myrpc.log`. Логи содержат информацию о подключениях клиентов, выполнении команд и возможных ошибках.
 
 
 

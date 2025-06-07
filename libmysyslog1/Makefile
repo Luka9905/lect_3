@@ -41,7 +41,7 @@ deb: clean all
 	@echo "Section: libs" >> $(BUILD_DIR)/DEBIAN/control
 	@echo "Priority: optional" >> $(BUILD_DIR)/DEBIAN/control
 	@echo "Architecture: $(ARCH)" >> $(BUILD_DIR)/DEBIAN/control
-	@echo "Maintainer: Your Name <your.email@example.com>" >> $(BUILD_DIR)/DEBIAN/control
+	@echo "Maintainer: Kirill <kirillluk7311@gmail.com>" >> $(BUILD_DIR)/DEBIAN/control
 	@echo "Description: My custom syslog library" >> $(BUILD_DIR)/DEBIAN/control
 
 	# Build package

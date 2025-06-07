@@ -37,7 +37,7 @@ deb: $(TARGET)
 	@echo "Section: net" >> $(DEB_DIR)/DEBIAN/control
 	@echo "Priority: optional" >> $(DEB_DIR)/DEBIAN/control
 	@echo "Architecture: $(ARCH)" >> $(DEB_DIR)/DEBIAN/control
-	@echo "Maintainer: Your Name <you@example.com>" >> $(DEB_DIR)/DEBIAN/control
+	@echo "Maintainer: Kirill <kirillluk7311@gmail.com>" >> $(DEB_DIR)/DEBIAN/control
 	@echo "Description: myRPC Client Application" >> $(DEB_DIR)/DEBIAN/control
 	@echo " Remote procedure call client for myRPC system" >> $(DEB_DIR)/DEBIAN/control
 
